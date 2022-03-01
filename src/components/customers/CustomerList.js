@@ -6,6 +6,7 @@ export const Customers = () => {
     // Inside the array being declared, the array will give you the inital value (customers)
     // and a function to accept the value of customers (setter function) later on in the code. 
     const [customers, setCustomers] = useState([])
+    const [totalCustomerMessage, updateMessage] = useState ("")  // updates message
 
     // useEffect hook fucntion takes two arguments, 
     useEffect( // when the state changes, run this code.
@@ -21,6 +22,17 @@ export const Customers = () => {
         [] // second argument for useEffect is always an array
     )
 
+        useEffect(
+            () => {
+                if (customers.length === 1) {
+                    updateMessage("You have 1 customer")
+                } else {
+                    updateMessage(`You have ${customers.length} customers`)
+                }
+
+            },
+            [customers]
+        )
 
     return ( // DON'T FORGET THE PARENTHESES
         // JSX fragment (empty opening and closing) allows us to return more than one item in React
@@ -29,8 +41,12 @@ export const Customers = () => {
         
         <h2>Customer List</h2>
 
+        <h4>{totalCustomerMessage}</h4>
+
+
         {// JSX interpolation doesn't require dollar sign ($)
-            customers.map( // map method is a conversion tool
+            customers.slice(0,5) // slice method to list 0-5 list items. (not index value)
+            .map( // map method is a conversion tool
                 (customerObject) => {
                     return <div><p>{customerObject.name}</p></div>
                 }
