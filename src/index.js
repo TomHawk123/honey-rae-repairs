@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Customers } from './components/customers/CustomerList';
+import { CustomerList, Customers } from './components/customers/CustomerList';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Employees } from './components/employees/EmployeesList'
+import { EmployeeList } from './components/employees/EmployeesList'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Customers />
-    <Employees />
+    <CustomerList />
+    <EmployeeList />
   </React.StrictMode>,
   document.getElementById('root')
 );
