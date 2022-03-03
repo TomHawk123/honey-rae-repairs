@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CustomerList, Customers } from './components/customers/CustomerList';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { EmployeeList } from './components/employees/EmployeesList'
-import { TicketList } from "./components/serviceTickets/TicketList.js"
+import { BrowserRouter } from "react-router-dom"
+import { Repairs } from './components/Repairs';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <CustomerList />
-    <EmployeeList />
-    <TicketList />
+    <BrowserRouter>
+    <Repairs />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
