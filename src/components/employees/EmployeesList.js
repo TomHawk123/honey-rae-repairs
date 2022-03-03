@@ -45,7 +45,7 @@ import React, { useEffect, useState } from "react"
 
 export const EmployeeList = () => {
     const [employees, setEmployee] = useState([])
-    //chap.6-create a New state variable
+    // create a New state variable
     const [totalEmployeeSpecialties, setSpecialty] = useState("")
 
     useEffect(

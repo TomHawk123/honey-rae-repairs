@@ -4,11 +4,13 @@ import { CustomerList, Customers } from './components/customers/CustomerList';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { EmployeeList } from './components/employees/EmployeesList'
+import { TicketList } from "./components/serviceTickets/TicketList.js"
 
 ReactDOM.render(
   <React.StrictMode>
     <CustomerList />
     <EmployeeList />
+    <TicketList />
   </React.StrictMode>,
   document.getElementById('root')
 );
