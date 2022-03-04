@@ -20,7 +20,7 @@ export const TicketList = () => {
         <>
             <h2> Service Tickets</h2>
             <div>
-                <button onClick={() => history.push("/ticket/create")}>Create Ticket</button>
+                <button onClick={() => history.push("/serviceTickets/create")}>Create Ticket</button>
             </div>
             {
                 serviceTickets.map(
