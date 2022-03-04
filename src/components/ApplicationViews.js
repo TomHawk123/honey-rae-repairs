@@ -10,6 +10,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { CustomerList } from "./customers/CustomerList"
 import { EmployeeList } from "./employees/EmployeesList"
+import { TicketForm } from "./serviceTickets/TicketForm"
 import { TicketList } from "./serviceTickets/TicketList"
 
 
@@ -28,6 +29,10 @@ export const ApplicationViews = () => {
 
             <Route path="/serviceTickets">
                 <TicketList />
+            </Route>
+
+            <Route path="/serviceTickets/create">
+                <TicketForm />
             </Route>
         </>
     )
