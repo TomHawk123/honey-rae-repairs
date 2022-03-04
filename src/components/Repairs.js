@@ -23,8 +23,8 @@ import "./Repairs.css";
 
 
 // Use custom render function for the Route if logic is needed to see what component should be rendered.
-    // If there is something in localStorage (user has logged in), render the NavBar and ApplicationViews components.
-    // else take the user to the login screen
+// If there is something in localStorage (user has logged in), render the NavBar and ApplicationViews components.
+// else take the user to the login screen
 export const Repairs = () => (
   <>
     <Route
