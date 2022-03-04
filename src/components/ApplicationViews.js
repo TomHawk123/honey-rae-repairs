@@ -27,11 +27,11 @@ export const ApplicationViews = () => {
                 <EmployeeList />
             </Route>
 
-            <Route path="/serviceTickets">
+            <Route exact path="/serviceTickets">
                 <TicketList />
             </Route>
 
-            <Route path="/serviceTickets/create">
+            <Route exact path="/serviceTickets/create">
                 <TicketForm />
             </Route>
         </>
