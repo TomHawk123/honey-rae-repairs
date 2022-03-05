@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom"
 
 
 export const TicketForm = () => {
-    const history = useHistory
+    const history = useHistory()
     // Since we're tracking what the user enters, we need a state variable (useState)
     // Pass it an object with the relevant properties the user will be modifying. 
     // As the user interacts with the form, the useState object will be updated.
@@ -14,7 +14,10 @@ export const TicketForm = () => {
 
     // This function lets us add all missing properties of a whole service ticket (customer, employee, date, description, etc.)
     // Function to be run onClick of "Submit Ticket" button
-    const submitTicket = () => {
+    const submitTicket = (e) => {
+
+        e.preventDefault()
+
         const newTicket = {
             // description property gotten from useState
             description: ticket.description,

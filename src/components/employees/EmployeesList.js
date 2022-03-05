@@ -42,8 +42,11 @@
 
 
 import React, { useEffect, useState } from "react"
+import { Link, useHistory } from "react-router-dom"
 
 export const EmployeeList = () => {
+    const history = useHistory()
+
     const [employees, setEmployee] = useState([])
     // create a New state variable
     const [totalEmployeeSpecialties, setSpecialty] = useState("")
@@ -60,28 +63,29 @@ export const EmployeeList = () => {
     )
 
     useEffect(() => {
-        
-            //1. Use .map() to get the specialty of each employee
-            const employeeSpecialties = employees.map(employee => employee.specialty) 
-           
-            //2. Then update a state variable to be a comma-separated string
-                //(e.g. "iPhone, Printers, ...")
-            setSpecialty(employeeSpecialties.join(", "))
-            
+
+        //1. Use .map() to get the specialty of each employee
+        const employeeSpecialties = employees.map(employee => employee.specialty)
+
+        //2. Then update a state variable to be a comma-separated string
+        //(e.g. "iPhone, Printers, ...")
+        setSpecialty(employeeSpecialties.join(", "))
+
     }, [employees])
 
     //invoke {totalEmployeeSpecialties} interpolated behind the colon in the <div> tag
 
     return (
         <>
-        <h2>Employee List</h2>
+            <h2>Employee List</h2>
+            <button onClick={() => history.push("/employees/create")}>Hire Employee</button>
             <div>
-            <b>Specialties:</b> {totalEmployeeSpecialties}
+                <b>Specialties:</b> {totalEmployeeSpecialties}
             </div>
             {
                 employees.map(
                     (employee) => {
-                        return <p key={`employee--${employee.id}`}>{employee.name}</p>
+                        return <p key={`employee--${employee.id}`}><Link to={`/employees/${employee.id}`}>{employee.name}</Link></p>
                     }
                 )
             }
