@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
+import { sendTicket } from "../ApiManager"
 
 
 export const TicketForm = () => {
-    const history = useHistory
+    const history = useHistory()
     // Since we're tracking what the user enters, we need a state variable (useState)
     // Pass it an object with the relevant properties the user will be modifying. 
     // As the user interacts with the form, the useState object will be updated.
@@ -14,7 +15,10 @@ export const TicketForm = () => {
 
     // This function lets us add all missing properties of a whole service ticket (customer, employee, date, description, etc.)
     // Function to be run onClick of "Submit Ticket" button
-    const submitTicket = () => {
+    const submitTicket = (e) => {
+
+        e.preventDefault()
+
         const newTicket = {
             // description property gotten from useState
             description: ticket.description,
@@ -28,22 +32,11 @@ export const TicketForm = () => {
             dateCompleted: ""
         }
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            // send the body of the request (newTicketObj)
-            // Can't send JS objects across http, can only send strings. Have to stringify it
-            body: JSON.stringify(newTicket)
-        }
-    
-        return fetch("http://localhost:8088/serviceTickets", fetchOption)
-            // dont care about the immediate response from fetch.
-            // use the history mechanism to programmatically 
+        return sendTicket(newTicket)
             .then(() => {
                 history.push("/tickets")
             })
+
     }
 
 

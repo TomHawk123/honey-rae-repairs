@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom/"
 export const TicketList = () => {
     // create a New state variable
     const [serviceTickets, setServiceTicke] = useState([])
+    // const [tickets, setActive] = useState([])
     const history = useHistory()
     useEffect(
         () => {
@@ -16,11 +17,17 @@ export const TicketList = () => {
         []
     )
 
+
+    // useEffect(() => {
+    //     const activeTicketCount = tickets.filter(t => t.dateCompleted === "").length
+    //     setActive(`There are ${activeTicketCount} open tickets`)
+    // }, [tickets])
+
     return (
         <>
             <h2> Service Tickets</h2>
             <div>
-                <button onClick={() => history.push("/serviceTickets/create")}>Create Ticket</button>
+                <button onClick={() => history.push("/tickets/create")}>Create Ticket</button>
             </div>
             {
                 serviceTickets.map(
