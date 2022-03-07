@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
+import { sendTicket } from "../ApiManager"
 
 
 export const TicketForm = () => {
@@ -31,22 +32,11 @@ export const TicketForm = () => {
             dateCompleted: ""
         }
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            // send the body of the request (newTicketObj)
-            // Can't send JS objects across http, can only send strings. Have to stringify it
-            body: JSON.stringify(newTicket)
-        }
-    
-        return fetch("http://localhost:8088/serviceTickets", fetchOption)
-            // dont care about the immediate response from fetch.
-            // use the history mechanism to programmatically 
+        return sendTicket(newTicket)
             .then(() => {
                 history.push("/tickets")
             })
+
     }
 
 

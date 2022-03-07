@@ -28,6 +28,10 @@ export const ApplicationViews = () => {
                 <EmployeeList />
             </Route>
 
+            <Route path="/employees/create">
+                <EmployeeForm />
+            </Route>
+
             <Route path="/tickets">
                 <TicketList />
             </Route>
@@ -36,9 +40,7 @@ export const ApplicationViews = () => {
                 <TicketForm />
             </Route>
 
-            <Route path="/employees/create">
-                <EmployeeForm />
-            </Route>
+
         </>
     )
 }

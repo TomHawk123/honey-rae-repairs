@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
-import { getAllLocations } from "../ApiManager";
+import { sendEmployee } from "../ApiManager";
 
 
 export const EmployeeForm = () => {
+
     const history = useHistory()
 
-    const [employee, update] = useState({
-        name: "",
-        specialty: "",
-        locationId: null
-    });
+    const [employee, update] = useState()
 
-    const [locations, updateLocations] = useState([])
-    useEffect(() => {
-        getAllLocations()
-            .then(
-                (location) => {
-                    updateLocations(location)
-                }
-            )
-    }, [])
+    // const [locations, updateLocations] = useState([])
+    // useEffect(() => {
+    //     getAllLocations()
+    //         .then(
+    //             (location) => {
+    //                 updateLocations(location)
+    //             }
+    //         )
+    // }, [])
 
 
     const submitEmployee = e => {
@@ -29,18 +26,11 @@ export const EmployeeForm = () => {
         const newEmployee = {
             name: employee.name,
             specialty: employee.specialty,
-            locationId: parseInt(employee.locationId)
+            // locationId: parseInt(employee.locationId)
 
         }
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newEmployee)
-        }
-        return fetch("http://localhost:8088/employees?_expand=location", fetchOption)
+        return sendEmployee(newEmployee)
             .then(() => {
                 history.push("/employees")
 
@@ -88,7 +78,7 @@ export const EmployeeForm = () => {
                 </div>
             </fieldset>
             <fieldset>
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label htmlFor="name">Location</label>
                     <select name="location" type="select"
                         onChange={
@@ -104,7 +94,7 @@ export const EmployeeForm = () => {
 
                     </select>
 
-                </div>
+                </div> */}
             </fieldset>
             <button className="btn btn-primary" onClick={submitEmployee}>
                 Hire Employee
