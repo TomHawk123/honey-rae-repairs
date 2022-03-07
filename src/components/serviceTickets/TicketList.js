@@ -33,8 +33,9 @@ export const TicketList = () => {
                 serviceTickets.map(
                     (serviceTicket) => {
                         return <div key={`serviceTicket--${serviceTicket.id}`}>
-                            <p>{serviceTicket.description} Submitted by {serviceTicket.customer.name} and worked on by {serviceTicket.employee.name}.</p>
-                        </div>
+                            <p className={serviceTicket.emergency ? `emergency` : `serviceTicket`}>
+                                {serviceTicket.emergency ? "🚑" : ""} {serviceTicket.description} submitted by {serviceTicket.customer.name} and worked on by {serviceTicket.employee.name}
+                            </p>                        </div>
                     }
                 )
             }
