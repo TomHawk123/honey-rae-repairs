@@ -13,6 +13,7 @@ import { EmployeeList } from "./employees/EmployeesList"
 import { TicketForm } from "./serviceTickets/TicketForm"
 import { TicketList } from "./serviceTickets/TicketList"
 import { EmployeeForm } from "./employees/EmployeeForm"
+import { Ticket } from "./serviceTickets/Ticket"
 
 
 // ¿How do I use debugger to check when Routes initiate?
@@ -32,8 +33,12 @@ export const ApplicationViews = () => {
                 <EmployeeForm />
             </Route>
 
-            <Route path="/tickets">
+            <Route exact path="/tickets">
                 <TicketList />
+            </Route>
+
+            <Route exact path="/tickets/:ticketId(\d+)">
+                <Ticket />
             </Route>
 
             <Route exact path="/tickets/create">

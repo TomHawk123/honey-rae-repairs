@@ -21,6 +21,7 @@ export const EmployeeForm = () => {
 
 
     const submitEmployee = e => {
+        
         e.preventDefault()
 
         const newEmployee = {
@@ -33,8 +34,6 @@ export const EmployeeForm = () => {
         return sendEmployee(newEmployee)
             .then(() => {
                 history.push("/employees")
-
-
             })
     }
 
