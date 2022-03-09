@@ -12,9 +12,15 @@ export const TicketList = () => {
                 .then((serviceTicketsArray) => {
                     setServiceTicket(serviceTicketsArray)
                 })
-        },
-        []
+        }, [serviceTickets]
     )
+
+    const deleteTicket = (id) => {
+        fetch(`http://localhost:8088/serviceTickets/${id}`, {
+            method: "DELETE"
+        })
+    }
+
 
     // useEffect(() => {
     //     const activeTicketCount = serviceTickets.filter(t => t.dateCompleted === "").length
@@ -33,6 +39,9 @@ export const TicketList = () => {
                         return <div key={`serviceTicket--${serviceTicket.id}`}>
                             <p className={serviceTicket.emergency ? `emergency` : `serviceTicket`}>
                                 {serviceTicket.emergency ? "🚑" : ""} <Link to={`/tickets/${serviceTicket.id}`}>{serviceTicket.description}</Link> submitted by {serviceTicket.customer.name} and worked on by {serviceTicket.employee.name}
+                                <button onClick={() => {
+                                    deleteTicket(serviceTicket.id)
+                                }}>Delete</button>
                             </p>
                         </div>
                     }
